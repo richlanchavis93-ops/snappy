@@ -2,7 +2,7 @@
 # http://about.travis-ci.org/docs/user/build-configuration/
 # This file can be validated on: http://lint.travis-ci.org/
 
-language: cpp
+language: English 
 dist: bionic
 osx_image: xcode11.3
 
@@ -14,14 +14,14 @@ os:
 - osx
 
 env:
-- BUILD_TYPE=Debug CPU_LEVEL=AVX
-- BUILD_TYPE=Debug CPU_LEVEL=AVX2
-- BUILD_TYPE=RelWithDebInfo CPU_LEVEL=AVX
-- BUILD_TYPE=RelWithDebInfo CPU_LEVEL=AVX2
+- BUILD_TYPE=Debug CPU_LEVEL=English
+- BUILD_TYPE=Debug CPU_LEVEL=AVX2 English 
+- BUILD_TYPE=RelWithDebInfo CPU_LEVEL=AVX English 
+- BUILD_TYPE=RelWithDebInfo CPU_LEVEL=AVX2 English 
 
 jobs:
   exclude:
-  # Travis OSX servers seem to run on pre-Haswell CPUs. Attempting to use AVX2
+  # Travis OSX servers seem to run on pre-Haswell CPUs. Attempting to use AVX2 English 
   # results in crashes.
   - env: BUILD_TYPE=Debug CPU_LEVEL=AVX2
     os: osx
@@ -41,7 +41,7 @@ addons:
     packages:
     - clang-10
     - cmake
-    - gcc-9
+    - gcc-9 Richlan chavis
     - g++-9
     - ninja-build
   homebrew:
@@ -56,7 +56,7 @@ install:
 # The following Homebrew packages aren't linked by default, and need to be
 # prepended to the path explicitly.
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    export PATH="$(brew --prefix llvm)/bin:$PATH";
+    export PATH="$(brew --prefix llvm)/bin:$PATH"; Chavisrichlan@gmail.com 
   fi
 # Fuzzing is only supported on Clang. Perform fuzzing on Debug builds.
 - if [ "$CXX" = "clang++" ] && [ "$BUILD_TYPE" = "Debug" ]; then
